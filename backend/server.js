@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
   res.send('Servidor Express funcionando y conectado a MongoDB ✅');
 });
 
+app.use('/api/productos', productRoutes); 
+
 app.get('/api/productos', async (req, res, next) => {
   try {
     const productos = await Product.find({});
@@ -25,9 +27,7 @@ app.get('/api/productos', async (req, res, next) => {
     console.error('Error al obtener productos:', error.message);
     next(error);
   }
-});
-
-app.use('/api/productos', productRoutes); 
+}); 
 
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);
@@ -44,7 +44,6 @@ app.use((err, req, res, next) => {
     }
   });
 });
-
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
