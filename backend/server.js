@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
+const productRoutes = require('./routes/productRoutes');
 const mongoose = require('mongoose');
 const Product = require('./models/Product');
-
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -27,6 +27,8 @@ app.get('/api/productos', async (req, res, next) => {
   }
 });
 
+app.use('/api/productos', productRoutes); 
+
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);
   error.status = 404;
@@ -35,6 +37,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
+  console.error(err.message, err.stack);
   res.status(status).json({
     error: {
       message: err.message || 'Error interno del servidor'
