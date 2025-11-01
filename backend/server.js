@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Product = require('./models/Product');
 const app = express();
 const PORT = process.env.PORT || 4000;
+const contactRoutes = require('./routes/contactRoutes');
 
 app.use(express.json());
 
@@ -19,15 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/productos', productRoutes); 
 
-app.get('/api/productos', async (req, res, next) => {
-  try {
-    const productos = await Product.find({});
-    res.status(200).json(productos);
-  } catch (error) {
-    console.error('Error al obtener productos:', error.message);
-    next(error);
-  }
-}); 
+app.use('/api/contacto', contactRoutes);
 
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);
