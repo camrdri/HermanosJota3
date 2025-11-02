@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { CartContext } from '../context/CartContext';
 
-
 function DetalleProducto() {
   const { id } = useParams();
   const { agregarAlCarrito, eliminarDelCarrito, carrito } = useContext(CartContext);
@@ -22,7 +21,7 @@ function DetalleProducto() {
         }
         const data = await response.json();
         setProducto(data);
-        setError(null)
+        setError(null);
       } catch (err) {
         setError(err);
         setProducto(null);
@@ -32,6 +31,26 @@ function DetalleProducto() {
     };
     fetchDetalle();
   }, [id]);
+
+  const handleEliminarProducto = async () => {
+    const confirmar = window.confirm(`¿Estás segura de que querés eliminar "${producto.nombre}"?`);
+    if (!confirmar) return;
+
+    try {
+      const res = await fetch(`/api/productos/${producto._id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) {
+        throw new Error('No se pudo eliminar el producto');
+      }
+
+      alert('Producto eliminado con éxito');
+      window.location.href = '/productos';
+    } catch (err) {
+      alert(`Error al eliminar: ${err.message}`);
+    }
+  };
 
   if (cargando) return <p>Cargando detalles del producto ID: {id}...</p>;
   if (error) return <p>Error al cargar el producto</p>;
@@ -66,18 +85,21 @@ function DetalleProducto() {
             AGREGAR AL CARRITO
           </button>
 
-          
           {stockAgotado && (
             <p style={{ color: '#A0522D', fontWeight: 'bold', marginTop: '8px' }}>
               Stock máximo alcanzado
             </p>
           )}
 
-          {carrito.find(p => p._id === producto._id) && (
+          {itemEnCarrito && (
             <button className="boton-quitar" onClick={() => eliminarDelCarrito(producto._id)}>
               QUITAR DEL CARRITO
             </button>
           )}
+
+          <button className="boton-eliminar" onClick={handleEliminarProducto}>
+            ELIMINAR PRODUCTO
+          </button>
         </div>
       </div>
       <Footer />
@@ -86,3 +108,4 @@ function DetalleProducto() {
 }
 
 export default DetalleProducto;
+
