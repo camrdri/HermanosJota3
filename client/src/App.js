@@ -10,7 +10,7 @@ import Contacto from './pages/ContactoPage';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navbar/>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

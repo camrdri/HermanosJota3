@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "../components/Footer";
 
 export default function ContactForm() {
   const [nombre, setNombre] = useState("");
@@ -109,6 +110,7 @@ const handleSubmit = async (e) => {
       {cargando && !exito && !error && (
           <p>Enviando mensaje...</p>
       )}
+      <Footer />
     </div>
   );
 }

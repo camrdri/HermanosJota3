@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 
 function DetalleProducto() {
-  const id  = useParams();
+  const {id} = useParams();
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -46,7 +46,8 @@ function DetalleProducto() {
       navigate('/productos');
 
       } catch (err) {
-      setError(err);
+      setError(err.message || 'Error de red o producto no encontrado');
+      setProducto(null);
       alert(`Error al eliminar el producto: ${err.message}`);
       }
   };
@@ -56,7 +57,7 @@ function DetalleProducto() {
   }
 
   if (error) {
-    return <p>Error al cargar el producto: {error.message}</p>;
+    return <p>Error al cargar el producto</p>;
   }
   
   

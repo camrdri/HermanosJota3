@@ -17,7 +17,7 @@ function Catalogo() {
         const data = await response.json();
         setProductos(data);
       } catch (err) {
-        setError(err);
+        setError(err.message || 'Error de red o producto no encontrado'); 
       } finally {
         setLoading(false);
       }
