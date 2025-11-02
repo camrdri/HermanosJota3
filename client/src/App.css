@@ -1,38 +1,569 @@
+/* ESTRUCTURA GENERAL */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  padding-top: 100px; /* Compensa navbar fijo */
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #C47A6D; /* Rosa Polvoriento */
+  padding: 0 2rem;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+}
+
+/* MENÚ CENTRADO */
+.navbar-menu {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  gap: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F5E6D3; /* Alabastro */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.navbar-menu li a:hover {
+  color: #D4A437; /* Vara de Oro */
+  text-decoration: underline;
+}
+
+/* BOTÓN HAMBURGUESA */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background-color: #F5E6D3;
+  transition: 0.3s;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-content {
+  background-color: rgba(245, 230, 211, 0.8); /* Alabastro con transparencia justa */
+  padding: 50px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero-content h1 {
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: #A0522D; /* Siena Tostado */
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  background-color: #87A96B;
+  color: #F5E6D3;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero-button:hover {
+  background-color: #6f8f5a;
+  color: #F5E6D3;
+  text-decoration: none;
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #3E2723; /* Madera oscura */
+  color: #F5E6D3;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  margin-top: 4rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.5rem;
+    height: 80px;
   }
-  to {
-    transform: rotate(360deg);
+
+  main {
+    padding-top: 80px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    z-index: 10001;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #C47A6D;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 10000;
+  }
+
+  .navbar-menu.active {
+    transform: translateX(0);
+  }
+
+  .navbar-menu li a {
+    font-size: 1.25rem;
+    padding: 1rem;
+  }
+
+  .hero {
+    height: auto;
+    min-height: 70vh;
+  }
+
+  .hero-content {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    padding: 0.875rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    padding: 2rem 1.5rem;
+  }
+}
+/* CONTENEDOR GENERAL */
+.contacto-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* TÍTULO Y SUBTÍTULO */
+.contacto-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #A0522D; /* Siena Tostado */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contacto-subtitulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #3E2723;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* FORMULARIO */
+.contact-form-container {
+  background-color: #F5E6D3; /* Alabastro */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+}
+
+#form-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#form-contacto label {
+  font-weight: 500;
+  color: #3E2723;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+}
+
+#form-contacto input,
+#form-contacto textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  width: 100%;
+}
+
+#form-contacto input:focus,
+#form-contacto textarea:focus {
+  outline: none;
+  border-color: #A0522D;
+}
+
+/* BOTÓN */
+#form-contacto button {
+  padding: 0.75rem 2rem;
+  background-color: #C47A6D; /* Rosa Polvoriento */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background-color 0.3s ease;
+}
+
+#form-contacto button:hover {
+  background-color: #a85f56;
+}
+
+/* MENSAJES */
+#mensaje-exito {
+  background-color: #87A96B; /* Verde Salvia */
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+#mensaje-error {
+  background-color: #d32f2f;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contacto-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .contacto-titulo {
+    font-size: 1.8rem;
+  }
+
+  .contacto-subtitulo {
+    font-size: 1rem;
+  }
+
+  .contact-form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  #form-contacto button {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+/* CONTENEDOR GENERAL */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* TÍTULO */
+.titulos {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #A0522D; /* Siena Tostado */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* GRILLA DE PRODUCTOS */
+#grilla-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem 3rem;
+}
+
+/* TARJETA INDIVIDUAL */
+.tarjeta-individual {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-individual:hover {
+  transform: translateY(-4px);
+}
+
+.imagen-producto {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.tarjeta-individual h3 {
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  color: #A0522D;
+  text-align: center;
+}
+
+.tarjeta-individual p {
+  padding: 0 1rem 1rem;
+  color: #3E2723;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .titulos {
+    font-size: 1.8rem;
+  }
+
+  #grilla-productos {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem 2rem;
+  }
+}
+/* TARJETA DE PRODUCTO */
+.tarjeta-individual {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tarjeta-individual:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGEN DEL PRODUCTO */
+.imagen-producto {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+/* NOMBRE DEL PRODUCTO */
+.tarjeta-individual h3 {
+  padding: 1rem 1rem 0.5rem;
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  color: #A0522D; /* Siena Tostado */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* PRECIO */
+.tarjeta-individual p {
+  padding: 0 1rem 1rem;
+  color: #3E2723; /* Madera Oscura */
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+/* DETALLE DE PRODUCTO */
+.detalle-producto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  align-items: center;
+}
+
+.imagen-detalle {
+  flex: 1 1 400px;
+  max-width: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-detalle {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-detalle h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #A0522D;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.info-detalle p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #3E2723;
+  line-height: 1.6;
+}
+
+.info-detalle ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.info-detalle ul li {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #3E2723;
+  margin-bottom: 0.5rem;
+}
+
+.precio-detalle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #A0522D;
+  font-family: 'Inter', sans-serif;
+  margin-top: 1rem;
+}
+
+/* BOTÓN CARRITO */
+.boton-carrito {
+  padding: 0.75rem 2rem;
+  background-color: #C47A6D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-carrito:hover {
+  background-color: #a85f56;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .detalle-producto {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+  }
+
+  .imagen-detalle {
+    max-width: 100%;
+  }
+
+  .info-detalle h1 {
+    font-size: 1.8rem;
+  }
+
+  .precio-detalle {
+    font-size: 1.3rem;
   }
 }

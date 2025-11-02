@@ -66,14 +66,26 @@ function DetalleProducto() {
   }
 
   return (
-    <div>
-      <h1>Detalles del Producto: {producto.nombre}</h1>
-      <p>ID: {producto._id}</p>
-      <p>Precio: ${producto.precio}</p>
-      <p>Descripción: {producto.descripcion}</p>
-      <p>Stock: {producto.stock}</p>
-      <img src={producto.imagenUrl} alt={producto.nombre} style={{ width: '200px' }} />
-      <button onClick={borrado}> Eliminar Producto </button>
+    <div className="detalle-producto">
+      <img
+        src={producto.imagenUrl}
+        alt={producto.nombre}
+        className="imagen-detalle"
+      />
+
+      <div className="info-detalle">
+        <h1>{producto.nombre}</h1>
+        <p>{producto.descripcion}</p>
+        <ul>
+          <li><strong>Precio:</strong> ${producto.precio}</li>
+          <li><strong>Stock:</strong> {producto.stock}</li>
+        </ul>
+
+        <button className="boton-eliminar" onClick={borrado}>
+          ELIMINAR PRODUCTO
+        </button>
+      </div>
+
       <Footer />
     </div>
   );

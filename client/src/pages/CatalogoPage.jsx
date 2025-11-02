@@ -35,7 +35,9 @@ function Catalogo() {
 
 return (
     <div>
-      <h2 className="titulos">Catálogo de Mueblería Jota</h2>
+      <div className="page-container">
+        <h2 className="titulos">Catálogo de Mueblería Jota</h2>
+      </div>
       <div id="grilla-productos">
         {productos.map(p => (
           <ProductCard key={p._id} producto={p} /> 
