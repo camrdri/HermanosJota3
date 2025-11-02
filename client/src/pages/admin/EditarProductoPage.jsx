@@ -63,50 +63,39 @@ function EditarProducto() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      <h2>Editar Producto</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="nombre"
-          value={form.nombre}
-          onChange={handleChange}
-          placeholder="Nombre"
-          required
-        />
-        <textarea
-          name="descripcion"
-          value={form.descripcion}
-          onChange={handleChange}
-          placeholder="Descripción"
-        />
-        <input
-          type="number"
-          name="precio"
-          value={form.precio}
-          onChange={handleChange}
-          placeholder="Precio"
-          required
-          min="0"
-        />
-        <input
-          type="number"
-          name="stock"
-          value={form.stock}
-          onChange={handleChange}
-          placeholder="Stock"
-          min="0"
-        />
-        <input
-          type="text"
-          name="imagenUrl"
-          value={form.imagenUrl}
-          onChange={handleChange}
-          placeholder="URL de la imagen"
-        />
+  <div className="admin-page-container">
+    <h1 className="admin-titulo"> EDITAR Producto</h1>
+    <h3 className='admin-subtitulo'> Cambiar datos del producto de nombre: {form.nombre} </h3>
+    <div className="admin-form-container">
+      <form id="form-crear-producto" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="nombre">Nombre del Producto</label>
+          <input type="text" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre"  />
+        </div>
+        
+        <div>
+          <label htmlFor="descripcion">Descripción</label>
+          <textarea name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripción" />            
+        </div>
+        
+        <div>
+           <label htmlFor="precio">Precio ($)</label>
+           <input type="number" name="precio" value={form.precio} onChange={handleChange} placeholder="Precio"  min="0" />
+        </div>
+        
+        <div>
+          <label htmlFor="stock">Stock Disponible</label>
+          <input type="number" name="stock" value={form.stock} onChange={handleChange} placeholder="Stock" min="0" />  
+        </div>
+
+        <div>
+          <label htmlFor="imagenUrl">URL de la Imagen</label>
+          <input type="text" name="imagenUrl" value={form.imagenUrl} onChange={handleChange} placeholder="URL de la imagen" />  
+          </div>
         <button type="submit">Guardar Cambios</button>
       </form>
     </div>
+  </div>
   );
 }
 

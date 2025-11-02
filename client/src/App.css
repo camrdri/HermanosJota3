@@ -567,3 +567,101 @@ footer {
     font-size: 1.3rem;
   }
 }
+
+
+/* Estilos para la pagina de Crear Producto */
+.admin-page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.admin-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #A0522D;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.admin-form-container {
+    background-color: #F5E6D3;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 3rem 2rem;
+}
+
+#form-crear-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#form-crear-producto label {
+    font-weight: 500;
+    color: #3E2723;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+    display: block; 
+    margin-bottom: 0.25rem;
+}
+
+#form-crear-producto input,
+#form-crear-producto textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box; /* Fundamental para que el padding no desborde el 100% */
+}
+
+#form-crear-producto input:focus,
+#form-crear-producto textarea:focus {
+    outline: none;
+    border-color: #A0522D;
+}
+
+
+#form-crear-producto button[type="submit"] {
+    padding: 0.875rem 2rem;
+    background-color: #87A96B;
+    color: #F5E6D3;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+#form-crear-producto button[type="submit"]:hover {
+    background-color: #6f8f5a; 
+}
+
+
+@media (max-width: 768px) {
+    .admin-page-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .admin-titulo {
+        font-size: 1.8rem;
+    }
+
+    .admin-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    #form-crear-producto button[type="submit"] {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
