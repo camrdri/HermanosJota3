@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './CrearProductoPage.css';
 
 function CrearProductoForm() {
   const navigate = useNavigate();
@@ -31,15 +32,17 @@ function CrearProductoForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Crear Nuevo Producto</h3>
-      <input type="text" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre (Obligatorio)" required />
-      <textarea name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripción" />
-      <input type="number" name="precio" value={form.precio} onChange={handleChange} placeholder="Precio (Obligatorio)" required min="0" />
-      <input type="number" name="stock" value={form.stock} onChange={handleChange} placeholder="Stock" min="0" />
-      <input type="text" name="imagenUrl" value={form.imagenUrl} onChange={handleChange} placeholder="URL de la imagen" />
-      <button type="submit">Crear Producto</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <h3>Crear Nuevo Producto</h3>
+        <input type="text" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre (Obligatorio)" required />
+        <textarea name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripción" />
+        <input type="number" name="precio" value={form.precio} onChange={handleChange} placeholder="Precio (Obligatorio)" required min="0" />
+        <input type="number" name="stock" value={form.stock} onChange={handleChange} placeholder="Stock" min="0" />
+        <input type="text" name="imagenUrl" value={form.imagenUrl} onChange={handleChange} placeholder="URL de la imagen" />
+        <button type="submit">Crear Producto</button>
+      </form>
+    </div>
   );
 }
 
