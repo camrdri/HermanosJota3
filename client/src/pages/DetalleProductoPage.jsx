@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { CartContext } from '../context/CartContext';
 
+
 function DetalleProducto() {
   const { id } = useParams();
   const { agregarAlCarrito, eliminarDelCarrito, carrito } = useContext(CartContext);
@@ -15,13 +16,13 @@ function DetalleProducto() {
     const fetchDetalle = async () => {
       try {
         setCargando(true);
-        const response = await fetch(`/api/productos/${id}`);
+        const response = await fetch(`/api/productos/${id}`); 
         if (!response.ok) {
           throw new Error('Producto no encontrado');
         }
         const data = await response.json();
         setProducto(data);
-        setError(null);
+        setError(null)
       } catch (err) {
         setError(err);
         setProducto(null);

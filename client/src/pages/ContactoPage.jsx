@@ -9,7 +9,7 @@ export default function ContactoPage() {
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     setCargando(true);
     setError(null);
@@ -33,8 +33,9 @@ export default function ContactoPage() {
         } catch {
           errorMessage += errorBody.substring(0, 100);
         }
-        throw new Error(errorMessage || 'Falló el envío del mensaje.');
+        throw new Error(errorMessage|| 'Falló el envío del mensaje.');
       }
+
 
       setExito(true);
       setNombre("");

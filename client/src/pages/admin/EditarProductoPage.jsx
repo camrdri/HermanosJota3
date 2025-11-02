@@ -105,6 +105,7 @@ function EditarProductoPage() {
         <button type="submit">Guardar Cambios</button>
       </form>
     </div>
+  </div>
   );
 }
 

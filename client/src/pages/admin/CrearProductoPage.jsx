@@ -6,23 +6,26 @@ function CrearProductoForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ nombre: '', precio: 0, descripcion: '', imagenUrl: '', stock: 0 });
 
-  const handleChange = (e) => {
+  const cambios = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    const newValue = (name === 'precio' || name === 'stock') 
+        ? parseFloat(value) 
+        : value;
+    setForm(prev => ({ ...prev, [name]: newValue }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const enviar = async (evento) => {
+    evento.preventDefault();
     try {
-      const response = await fetch('/api/productos', {
+      const respuesta = await fetch('/api/productos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
-      if (!response.ok) {
+      if (!respuesta.ok) {
         throw new Error('Falló la creación del producto');
       } else { 
-        const nuevoProducto = await response.json();
+        const nuevoProducto = await respuesta.json();
         alert(`Producto "${nuevoProducto.nombre}" creado con éxito.`);
         navigate(`/productos/${nuevoProducto._id}`); 
       }
