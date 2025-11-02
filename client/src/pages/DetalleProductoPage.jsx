@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
-
+//comentario de prueba
 function DetalleProducto() {
   const { id } = useParams();
   const navigate = useNavigate();
