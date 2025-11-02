@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './CrearProductoPage.css';
 
 function CrearProductoForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ nombre: '', precio: 0, descripcion: '', imagenUrl: '', stock: 0 });
 
-  const cambios = (e) => {
+  const handleChange  = (e) => {
     const { name, value } = e.target;
     const newValue = (name === 'precio' || name === 'stock') 
         ? parseFloat(value) 
@@ -13,7 +14,7 @@ function CrearProductoForm() {
     setForm(prev => ({ ...prev, [name]: newValue }));
   };
 
-  const enviar = async (evento) => {
+  const handleSubmit = async (evento) => {
     evento.preventDefault();
     try {
       const respuesta = await fetch('/api/productos', {
@@ -34,38 +35,16 @@ function CrearProductoForm() {
   };
 
   return (
-    <div className="admin-page-container">
-      <h1 className="admin-titulo">Crear Nuevo Producto</h1>
-      <div className="admin-form-container">
-        <form id="form-crear-producto" onSubmit={enviar}>
-          <div>
-            <label htmlFor="nombre">Nombre del Producto</label>
-            <input type="text" name="nombre" value={form.nombre} onChange={cambios} placeholder="Nombre (Obligatorio)" required />
-          </div>
-
-          <div>
-            <label htmlFor="descripcion">Descripción</label>
-            <textarea name="descripcion" value={form.descripcion} onChange={cambios} placeholder="Descripción" />            
-          </div>
-
-          <div>
-            <label htmlFor="precio">Precio ($)</label>
-            <input type="number" name="precio" value={form.precio} onChange={cambios} placeholder="Precio (Obligatorio)" required min="0" />
-          </div>
-
-          <div>
-            <label htmlFor="stock">Stock Disponible</label>
-            <input type="number" name="stock" value={form.stock} onChange={cambios} placeholder="Stock" min="0" />  
-          </div>
-
-          <div>
-            <label htmlFor="imagenUrl">URL de la Imagen</label>
-            <input type="text" name="imagenUrl" value={form.imagenUrl} onChange={cambios} placeholder="URL de la imagen" />  
-          </div>
-
-          <button type="submit">Crear Producto</button>
-        </form>
-      </div>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <h3>Crear Nuevo Producto</h3>
+        <input type="text" name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre (Obligatorio)" required />
+        <textarea name="descripcion" value={form.descripcion} onChange={handleChange} placeholder="Descripción" />
+        <input type="number" name="precio" value={form.precio} onChange={handleChange} placeholder="Precio (Obligatorio)" required min="0" />
+        <input type="number" name="stock" value={form.stock} onChange={handleChange} placeholder="Stock" min="0" />
+        <input type="text" name="imagenUrl" value={form.imagenUrl} onChange={handleChange} placeholder="URL de la imagen" />
+        <button type="submit">Crear Producto</button>
+      </form>
     </div>
   );
 }

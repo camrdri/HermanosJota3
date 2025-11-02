@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import "./App.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './components/Navbar';
+import Carrito from './components/Carrito';
+
 import Home from './pages/HomePage';
 import Catalogo from './pages/CatalogoPage';
 import DetalleProducto from './pages/DetalleProductoPage';
@@ -9,9 +13,12 @@ import Contacto from './pages/ContactoPage';
 import EditarProducto from './pages/admin/EditarProductoPage';
 
 function App() {
+  const [carritoVisible, setCarritoVisible] = useState(false);
+
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar abrirCarrito={() => setCarritoVisible(true)} />
+      <Carrito visible={carritoVisible} cerrar={() => setCarritoVisible(false)} />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
