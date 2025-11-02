@@ -1,0 +1,22 @@
+# Ignorar archivos sensibles
+.env
+backend/.env
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+
+# Ignorar las carpetas de dependencias en subdirectorios
+backend/node_modules/
+client/node_modules/
+
+# Archivos de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de build y sistema
+/build
+/dist
+.DS_Store
+Thumbs.db

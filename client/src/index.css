@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #F5E6D3;
+  color: #3E2723;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #A0522D;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+a {
+  color: #A0522D;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #D4A437;
+  text-decoration: underline;
+}
+
+/* EXCEPCIÓN para botones tipo Link */
+.hero-button:hover {
+  color: #F5E6D3;
+  text-decoration: none;
+  background-color: #6f8f5a;
+}
+
