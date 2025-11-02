@@ -6,7 +6,7 @@ function CrearProductoForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ nombre: '', precio: 0, descripcion: '', imagenUrl: '', stock: 0 });
 
-  const cambios = (e) => {
+  const handleChange  = (e) => {
     const { name, value } = e.target;
     const newValue = (name === 'precio' || name === 'stock') 
         ? parseFloat(value) 
@@ -14,7 +14,7 @@ function CrearProductoForm() {
     setForm(prev => ({ ...prev, [name]: newValue }));
   };
 
-  const enviar = async (evento) => {
+  const handleSubmit = async (evento) => {
     evento.preventDefault();
     try {
       const respuesta = await fetch('/api/productos', {
