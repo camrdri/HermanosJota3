@@ -64,22 +64,31 @@ function EditarProductoPage() {
     <div className="form-admin">
       <form onSubmit={handleSubmit}>
         <h3>Editar Producto</h3>
+
+        <label htmlFor="nombre">Nombre (Obligatorio)</label>
         <input
           type="text"
+          id="nombre"
           name="nombre"
           value={form.nombre}
           onChange={handleChange}
           placeholder="Nombre"
           required
         />
+
+        <label htmlFor="descripcion">Descripción</label>
         <textarea
+          id="descripcion"
           name="descripcion"
           value={form.descripcion}
           onChange={handleChange}
           placeholder="Descripción"
         />
+
+        <label htmlFor="precio">Precio</label>
         <input
           type="number"
+          id="precio"
           name="precio"
           value={form.precio}
           onChange={handleChange}
@@ -87,25 +96,31 @@ function EditarProductoPage() {
           required
           min="0"
         />
+
+        <label htmlFor="stock">Stock</label>
         <input
           type="number"
+          id="stock"
           name="stock"
           value={form.stock}
           onChange={handleChange}
           placeholder="Stock"
           min="0"
         />
+
+        <label htmlFor="imagenUrl">URL de la imagen</label>
         <input
           type="text"
+          id="imagenUrl"
           name="imagenUrl"
           value={form.imagenUrl}
           onChange={handleChange}
           placeholder="URL de la imagen"
         />
+
         <button type="submit">Guardar Cambios</button>
       </form>
     </div>
- 
   );
 }
 

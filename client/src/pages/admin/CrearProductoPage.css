@@ -101,3 +101,11 @@
 .form-admin button:hover {
   background-color: #A0522D;
 }
+
+.form-admin label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #A0522D;
+  font-size: 14px;
+}
