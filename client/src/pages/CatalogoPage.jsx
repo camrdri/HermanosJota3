@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
-
 function Catalogo() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,9 +12,8 @@ function Catalogo() {
 
   useEffect(() => {
     const fetchProductos = async () => {
-      const URL_FINAL = `${API_BASE}/productos`; 
       try {
-        const response = await fetch(URL_FINAL);
+        const response = await fetch('/api/productos');
         if (!response.ok) {
           throw new Error('Falló la carga de productos');
         }
