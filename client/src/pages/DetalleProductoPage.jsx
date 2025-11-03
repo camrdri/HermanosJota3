@@ -14,8 +14,9 @@ function DetalleProducto() {
   useEffect(() => {
     const fetchDetalle = async () => {
       try {
+        console.log('API:', import.meta.env.VITE_API_URL);
         setCargando(true);
-        const response = await fetch(`/api/productos/${id}`); 
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/productos/${id}`);
         if (!response.ok) {
           throw new Error('Producto no encontrado');
         }
@@ -32,12 +33,14 @@ function DetalleProducto() {
     fetchDetalle();
   }, [id]);
 
+
   const handleEliminarProducto = async () => {
     const confirmar = window.confirm(`¿Estás segura de que querés eliminar "${producto.nombre}"?`);
     if (!confirmar) return;
 
     try {
-      const res = await fetch(`/api/productos/${producto._id}`, {
+      console.log('API:', import.meta.env.VITE_API_URL);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/productos/${producto._id}`, {
         method: 'DELETE',
       });
 
@@ -51,6 +54,7 @@ function DetalleProducto() {
       alert(`Error al eliminar: ${err.message}`);
     }
   };
+
 
   if (cargando) return <p>Cargando detalles del producto ID: {id}...</p>;
   if (error) return <p>Error al cargar el producto</p>;

@@ -13,20 +13,21 @@ function Catalogo() {
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        const response = await fetch('/api/productos');
+        
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/productos`);
         if (!response.ok) {
           throw new Error('Falló la carga de productos');
         }
         const data = await response.json();
         setProductos(data);
       } catch (err) {
-        setError(err.message || 'Error de red o producto no encontrado'); 
+        setError(err.message || 'Error de red o producto no encontrado');
       } finally {
         setLoading(false);
       }
     };
     fetchProductos();
-  }, []);  
+  }, []);
 
   const filtrarYOrdenar = () => {
     let filtrados = productos.filter(p =>
@@ -70,7 +71,7 @@ function Catalogo() {
 
       <div id="grilla-productos">
         {filtrarYOrdenar().map(p => (
-          <ProductCard key={p._id} producto={p} /> 
+          <ProductCard key={p._id} producto={p} />
         ))}
       </div>
 

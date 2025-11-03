@@ -9,14 +9,14 @@ export default function ContactoPage() {
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setCargando(true);
     setError(null);
     setExito(false);
-
     try {
-      const response = await fetch('/api/contacto', {
+      console.log('API:', import.meta.env.VITE_API_URL);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contacto`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
         } catch {
           errorMessage += errorBody.substring(0, 100);
         }
-        throw new Error(errorMessage|| 'Falló el envío del mensaje.');
+        throw new Error(errorMessage || 'Falló el envío del mensaje.');
       }
 
 

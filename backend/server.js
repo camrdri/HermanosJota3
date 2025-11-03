@@ -6,10 +6,11 @@ const Product = require('./models/Product');
 const app = express();
 const PORT = process.env.PORT || 4000;
 const contactRoutes = require('./routes/contactRoutes');
+const cors = require('cors');
 
 
 app.use(express.json());
-
+app.use(cors());
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Conexión exitosa a MongoDB Atlas'))
   .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/productos', productRoutes); 
+
 
 app.use('/api/contacto', contactRoutes);
 
