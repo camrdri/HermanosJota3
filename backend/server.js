@@ -9,7 +9,13 @@ const contactRoutes = require('./routes/contactRoutes');
 const cors = require('cors');
 
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://muebleriahermaanosjota.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Conexión exitosa a MongoDB Atlas'))
   .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
@@ -19,7 +25,7 @@ app.get('/', (req, res) => {
   res.send('Servidor Express funcionando y conectado a MongoDB ✅');
 });
 
-app.use('/api/productos', productRoutes); 
+app.use('/api/productos', productRoutes);
 
 
 app.use('/api/contacto', contactRoutes);
