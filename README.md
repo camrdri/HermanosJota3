@@ -19,7 +19,7 @@ Crear un archivo `.env` en la carpeta `backend/` con el siguiente contenido:
 
 ```env
 PORT=4000
-MONGO_URI=mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/<nombreDB>?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/<nombreDB>?retryWrites=true&w=majority
 ```
 
 >  Asegurate de que tu IP esté habilitada en MongoDB Atlas o agregá `0.0.0.0/0` para desarrollo.
