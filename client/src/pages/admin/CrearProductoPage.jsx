@@ -23,7 +23,8 @@ function CrearProductoForm() {
   const handleSubmit = async (evento) => {
     evento.preventDefault();
     try {
-      const respuesta = await fetch('/api/productos', {
+      console.log('API:', import.meta.env.VITE_API_URL);
+      const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/api/productos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -39,6 +40,7 @@ function CrearProductoForm() {
       alert(`Error: ${error.message}`);
     }
   };
+
 
   return (
     <div className="form-admin">

@@ -18,7 +18,8 @@ function EditarProductoPage() {
   useEffect(() => {
     const fetchProducto = async () => {
       try {
-        const res = await fetch(`/api/productos/${id}`);
+        console.log('API:', import.meta.env.VITE_API_URL);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/productos/${id}`);
         if (!res.ok) throw new Error('Producto no encontrado');
         const data = await res.json();
         setForm({
@@ -37,14 +38,15 @@ function EditarProductoPage() {
     fetchProducto();
   }, [id]);
 
+
   const handleChange = e => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await fetch(`/api/productos/${id}`, {
+      console.log('API:', import.meta.env.VITE_API_URL);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/productos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -56,6 +58,7 @@ function EditarProductoPage() {
       alert(`${err.message}`);
     }
   };
+
 
   if (cargando) return <p>Cargando datos del producto...</p>;
   if (error) return <p>Error: {error}</p>;

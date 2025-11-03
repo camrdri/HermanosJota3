@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 function Home() {
+  console.log('🏠 Componente Home montado');
+
   const heroStyle = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/images/Aparador-Uspallata.png)`,
+    backgroundImage: `url(/images/Aparador-Uspallata.png)`,
   };
 
   return (
