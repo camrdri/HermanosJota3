@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
 
 function Catalogo() {
   const [productos, setProductos] = useState([]);
