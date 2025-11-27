@@ -1,12 +1,14 @@
 require('dotenv').config();
 const express = require('express');
-const productRoutes = require('./routes/productRoutes');
 const mongoose = require('mongoose');
-const Product = require('./models/Product');
+const cors = require('cors');
+const productRoutes = require('./routes/productRoutes');
+const contactRoutes = require('./routes/contactRoutes');
+const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+
 const app = express();
 const PORT = process.env.PORT || 4000;
-const contactRoutes = require('./routes/contactRoutes');
-const cors = require('cors');
 
 app.use(express.json());
 
@@ -20,15 +22,14 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Conexión exitosa a MongoDB Atlas'))
   .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
-// Endpoint base
 app.get('/', (req, res) => {
   res.send('Servidor Express funcionando y conectado a MongoDB ✅');
 });
 
 app.use('/api/productos', productRoutes);
-
-
 app.use('/api/contacto', contactRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);
