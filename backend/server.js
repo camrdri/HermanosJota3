@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const contactRoutes = require('./routes/contactRoutes');
 const cors = require('cors');
+const userRoutes = require('./routes/userRoutes')
 
 app.use(express.json());
 
@@ -27,8 +28,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/productos', productRoutes);
 
-
 app.use('/api/contacto', contactRoutes);
+
+app.use('/api/users', userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);

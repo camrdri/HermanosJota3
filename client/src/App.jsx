@@ -4,6 +4,7 @@ import "./App.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './components/Navbar';
 import Carrito from './components/Carrito';
+import AdminRoute from './components/AdminRoute';
 
 import Home from './pages/HomePage';
 import Catalogo from './pages/CatalogoPage';
@@ -11,6 +12,8 @@ import DetalleProducto from './pages/DetalleProductoPage';
 import CrearProductoForm from './pages/admin/CrearProductoPage';
 import Contacto from './pages/ContactoPage';
 import EditarProducto from './pages/admin/EditarProductoPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   const [carritoVisible, setCarritoVisible] = useState(false);
@@ -25,8 +28,10 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/productos/:id" element={<DetalleProducto />} />
-          <Route path="/admin/crear-producto" element={<CrearProductoForm />} />
-          <Route path="/admin/editar-producto/:id" element={<EditarProducto />} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/admin/crear-producto" element={<AdminRoute> <CrearProductoForm /> </AdminRoute>} />
+          <Route path="/admin/editar-producto/:id" element={<AdminRoute> <EditarProducto /> </AdminRoute>} />
         </Routes>
       </main>
     </div>
