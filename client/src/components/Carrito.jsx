@@ -2,7 +2,8 @@ import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
 function Carrito({ visible, cerrar }) {
-  const { carrito, eliminarDelCarrito, vaciarCarrito } = useContext(CartContext);
+  const { carrito, eliminarDelCarrito, vaciarCarrito, reducirCantidadCarrito, agregarAlCarrito } = useContext(CartContext);
+  const total = carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
 
   if (!visible) return null;
 
@@ -17,6 +18,9 @@ function Carrito({ visible, cerrar }) {
           {carrito.map((p) => (
             <li key={p._id}>
               {p.nombre} x {p.cantidad}
+              <button onClick={() => reducirCantidadCarrito(p._id)}>-</button>
+                    <span> {p.cantidad} </span>
+              <button onClick={() => agregarAlCarrito(p)}>+</button>
               <button onClick={() => eliminarDelCarrito(p._id)}>Eliminar</button>
             </li>
           ))}
@@ -25,6 +29,7 @@ function Carrito({ visible, cerrar }) {
       {carrito.length > 0 && (
         <button onClick={vaciarCarrito}>Vaciar carrito</button>
       )}
+      <button onClick={() => {cerrar();}}> Finalizar Compra </button>
     </div>
   );
 }

@@ -23,10 +23,22 @@ export function CartProvider({ children }) {
     setCarrito(carrito.filter((p) => p._id !== id));
   };
 
+
+  const reducirCantidadCarrito = (id) => {
+    const producto = carrito.find((p) => p._id === id);
+    if (producto.cantidad > 1) {
+      setCarrito(carrito.map(p =>
+        p._id === id ? { ...p, cantidad: p.cantidad - 1 } : p
+      ));
+    } else {
+      eliminarDelCarrito(id);
+    }
+  };
+
   const vaciarCarrito = () => setCarrito([]);
 
   return (
-    <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, vaciarCarrito }}>
+    <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, vaciarCarrito, reducirCantidadCarrito }}>
       {children}
     </CartContext.Provider>
   );
