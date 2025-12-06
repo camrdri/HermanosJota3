@@ -6,6 +6,7 @@ const productRoutes = require('./routes/productRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const authRoutes = require('./routes/authRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const userRoutes = require('./routes/userRoutes')
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -30,6 +31,7 @@ app.use('/api/productos', productRoutes);
 app.use('/api/contacto', contactRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/users', userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error(`Ruta no encontrada: ${req.originalUrl}`);
