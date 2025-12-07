@@ -5,7 +5,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './components/Navbar';
 import Carrito from './components/Carrito';
 import AdminRoute from './components/AdminRoute';
-
+import ProtectedRoute from './components/ProtectedRoute';
+import Perfil  from './pages/PerfilPage';
+import TerminarComprar from './pages/TerminardeComprarPage';
 import Home from './pages/HomePage';
 import Catalogo from './pages/CatalogoPage';
 import DetalleProducto from './pages/DetalleProductoPage';
@@ -32,6 +34,8 @@ function App() {
           <Route path="/register" element={<RegisterPage/>} />
           <Route path="/admin/crear-producto" element={<AdminRoute> <CrearProductoForm /> </AdminRoute>} />
           <Route path="/admin/editar-producto/:id" element={<AdminRoute> <EditarProducto /> </AdminRoute>} />
+          <Route path="/perfil" element={<ProtectedRoute> <Perfil /> </ProtectedRoute>} />
+          <Route path="/terminar-comprar" element={<ProtectedRoute> <TerminarComprar /> </ProtectedRoute>} />
         </Routes>
       </main>
     </div>
