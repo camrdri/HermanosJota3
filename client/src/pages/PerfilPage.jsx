@@ -76,13 +76,13 @@ function Perfil() {
                     <p><strong>Rol:</strong> {dato.rol || 'Cliente'}</p>
                     <hr/>
                     <h3>Mis Pedidos Recientes</h3>
-                    {orders.length > 0 ? (
+                    {pedidos.length > 0 ? (
                         <ul className="pedidos-list">
-                            {orders.map(order => (
-                                <li key={order._id} className="pedido-item">
-                                    <p><strong>Pedido No:</strong> {order._id.slice(-8)}</p>
-                                    <p><strong>Fecha:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
-                                    <p><strong>Total:</strong> **${order.totalAmount.toFixed(2)}**</p>
+                            {pedidos.map(pedido => (
+                                <li key={pedido._id} className="pedido-item">
+                                    <p><strong>Pedido No:</strong> {pedido._id.slice(-8)}</p>
+                                    <p><strong>Fecha:</strong> {new Date(pedido.createdAt).toLocaleDateString()}</p>
+                                    <p><strong>Total:</strong> **${pedido.totalAmount.toFixed(2)}**</p>
                                 </li>
                             ))}
                         </ul>
