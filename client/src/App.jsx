@@ -4,13 +4,26 @@ import "./App.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navbar from './components/Navbar';
 import Carrito from './components/Carrito';
-
+import AdminRoute from './components/AdminRoute';
+import ProtectedRoute from './components/ProtectedRoute';
+<<<<<<< HEAD
+import Perfil  from './pages/PerfilPage';
+import TerminarComprar from './pages/TerminardeComprarPage';
+=======
+>>>>>>> parent of e3b4c6f (elimine app)
 import Home from './pages/HomePage';
 import Catalogo from './pages/CatalogoPage';
 import DetalleProducto from './pages/DetalleProductoPage';
 import CrearProductoForm from './pages/admin/CrearProductoPage';
 import Contacto from './pages/ContactoPage';
 import EditarProducto from './pages/admin/EditarProductoPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+<<<<<<< HEAD
+=======
+import Perfil from './pages/PerfilPage';
+import TerminarComprar from './pages/TerminarComprarPage';
+>>>>>>> parent of e3b4c6f (elimine app)
 
 function App() {
   const [carritoVisible, setCarritoVisible] = useState(false);
@@ -25,9 +38,17 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/productos/:id" element={<DetalleProducto />} />
-          <Route path="/admin/crear-producto" element={<CrearProductoForm />} />
-          <Route path="/admin/editar-producto/:id" element={<EditarProducto />} />
-
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/admin/crear-producto" element={<AdminRoute> <CrearProductoForm /> </AdminRoute>} />
+          <Route path="/admin/editar-producto/:id" element={<AdminRoute> <EditarProducto /> </AdminRoute>} />
+<<<<<<< HEAD
+          <Route path="/perfil" element={<ProtectedRoute> <Perfil /> </ProtectedRoute>} />
+          <Route path="/terminar-comprar" element={<ProtectedRoute> <TerminarComprar /> </ProtectedRoute>} />
+=======
+          <Route path="/perfil" element={<ProtectedRoute> <Perfil/> </ProtectedRoute>}/>
+          <Route path="/terminar-compra" element={<ProtectedRoute> <TerminarComprar/> </ProtectedRoute>} />
+>>>>>>> parent of e3b4c6f (elimine app)
         </Routes>
       </main>
     </div>
