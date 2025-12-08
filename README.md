@@ -4,22 +4,11 @@ Sitio web para la mueblería Hermanos Jota, desarrollado con React + Vite en el 
 
 ---
 
-##  Sitios desplegados
-
-- **Frontend (Vercel):** [https://muebleriahermaanosjota.vercel.app](https://muebleriahermaanosjota.vercel.app)
-- **Backend (Render):** [https://hermanosjota3.onrender.com](https://hermanosjota3.onrender.com)
-
----
-
 ##  Variables de entorno para desarrollo local
 
 ###  Backend (`/backend`)
 
-Crear un archivo `.env` en la carpeta `backend/` con el siguiente contenido:
-
-```env
-PORT=4000
-MONGODB_URI=mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/<nombreDB>?retryWrites=true&w=majority
+Crear un archivo `.env` en la carpeta `backend/` siguiendo lo que muestra el `.envexample`
 ```
 
 >  Asegurate de que tu IP esté habilitada en MongoDB Atlas o agregá `0.0.0.0/0` para desarrollo.
